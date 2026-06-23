@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import company from "@/data/company.json";
 import HeroVisual from "@/components/ui/HeroVisual";
+import ThreeDCanvas from "@/components/canvas/ThreeDCanvas";
+import Magnetic from "@/components/ui/Magnetic";
 
 const HomeHero = () => {
   return (
@@ -11,6 +13,9 @@ const HomeHero = () => {
       id="home"
       className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px]"
     >
+      {/* 3D Wireframe Cyber-Terrain Wave */}
+      <ThreeDCanvas />
+
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
@@ -36,19 +41,23 @@ const HomeHero = () => {
                 engineering discipline, transparent delivery, and long-term support since{" "}
                 {company.establishedYear}.
               </p>
-              <div className="flex flex-col items-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                <Link
-                  href="/contact/"
-                  className="rounded-xs bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                >
-                  Start a Project
-                </Link>
-                <Link
-                  href="/services/"
-                  className="inline-block rounded-xs bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                >
-                  Explore Services
-                </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                <Magnetic>
+                  <Link
+                    href="/contact/"
+                    className="rounded-xs bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 block"
+                  >
+                    Start a Project
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link
+                    href="/services/"
+                    className="inline-block rounded-xs bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+                  >
+                    Explore Services
+                  </Link>
+                </Magnetic>
               </div>
             </motion.div>
           </div>

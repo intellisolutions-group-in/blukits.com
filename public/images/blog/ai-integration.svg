@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020815" />
+      <stop offset="50%" stop-color="#0b1735" />
+      <stop offset="100%" stop-color="#01040a" />
+    </linearGradient>
+
+    <!-- Glowing Cyan/Green Gradient -->
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1" />
+    </pattern>
+
+    <!-- Neon Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+
+  <!-- Background Light Glows -->
+  <circle cx="400" cy="250" r="160" fill="#06b6d4" opacity="0.05" filter="url(#glow)" />
+  <circle cx="400" cy="250" r="100" fill="#8b5cf6" opacity="0.05" filter="url(#glow)" />
+
+  <!-- Neural Network Connections -->
+  <g stroke="url(#neonGrad)" opacity="0.4" stroke-width="1.5">
+    <line x1="280" y1="180" x2="400" y2="250" />
+    <line x1="280" y1="320" x2="400" y2="250" />
+    <line x1="520" y1="180" x2="400" y2="250" />
+    <line x1="520" y1="320" x2="400" y2="250" />
+
+    <line x1="280" y1="180" x2="280" y2="320" />
+    <line x1="520" y1="180" x2="520" y2="320" />
+
+    <!-- Secondary Node Lines -->
+    <line x1="180" y1="250" x2="280" y2="180" />
+    <line x1="180" y1="250" x2="280" y2="320" />
+    <line x1="620" y1="250" x2="520" y2="180" />
+    <line x1="620" y1="250" x2="520" y2="320" />
+  </g>
+
+  <!-- Neural Network Nodes -->
+  <g filter="url(#glow)">
+    <circle cx="280" cy="180" r="8" fill="#10b981" />
+    <circle cx="280" cy="320" r="8" fill="#06b6d4" />
+    <circle cx="520" cy="180" r="8" fill="#3b82f6" />
+    <circle cx="520" cy="320" r="8" fill="#8b5cf6" />
+    
+    <circle cx="180" cy="250" r="6" fill="#10b981" />
+    <circle cx="620" cy="250" r="6" fill="#8b5cf6" />
+  </g>
+
+  <!-- Core AI / CPU Brain Chip in the Center -->
+  <g transform="translate(340, 190)" filter="url(#glow)">
+    <!-- Base Silicon Chip -->
+    <rect width="120" height="120" rx="16" fill="#111827" stroke="url(#cpuGrad)" stroke-width="2" />
+    
+    <!-- Chip Pins -->
+    <rect x="-10" y="20" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="-10" y="45" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="-10" y="70" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="-10" y="95" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+
+    <rect x="120" y="20" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="120" y="45" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="120" y="70" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+    <rect x="120" y="95" width="10" height="8" rx="2" fill="url(#cpuGrad)" />
+
+    <rect x="20" y="-10" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="45" y="-10" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="70" y="-10" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="95" y="-10" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+
+    <rect x="20" y="120" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="45" y="120" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="70" y="120" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+    <rect x="95" y="120" width="8" height="10" rx="2" fill="url(#cpuGrad)" />
+
+    <!-- Inner Processor core design -->
+    <rect x="20" y="20" width="80" height="80" rx="10" fill="#1f2937" stroke="url(#neonGrad)" stroke-width="1.5" />
+    
+    <!-- Glowing AI Text / Brain Symbol -->
+    <text x="50%" y="54%" fill="#ffffff" font-family="'Inter', sans-serif" font-size="28" font-weight="900" text-anchor="middle" letter-spacing="1">AI</text>
+    <path d="M 40 75 Q 60 65 80 75" fill="none" stroke="url(#neonGrad)" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Ornaments -->
+  <circle cx="340" cy="120" r="3" fill="#10b981" opacity="0.6" />
+  <circle cx="460" cy="120" r="3" fill="#3b82f6" opacity="0.6" />
+  <circle cx="300" cy="380" r="4.5" fill="#06b6d4" opacity="0.6" filter="url(#glow)" />
+  <circle cx="500" cy="380" r="4.5" fill="#8b5cf6" opacity="0.6" filter="url(#glow)" />
+</svg>

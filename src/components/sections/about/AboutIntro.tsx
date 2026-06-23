@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import company from "@/data/company.json";
 import { PAGE_TOP_PADDING } from "@/lib/layout";
+import ThreeDGlobe from "@/components/canvas/ThreeDGlobe";
 
 const highlights = [
   { icon: Calendar, label: "Established", value: String(company.establishedYear) },
@@ -70,9 +71,15 @@ const AboutIntro = () => {
           >
             <div className="shadow-feature-2 relative overflow-hidden rounded-2xl border border-primary/10 bg-white p-8 dark:bg-dark md:p-10">
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/15 blur-2xl" />
-              <p className="relative z-10 mb-8 text-lg font-medium leading-relaxed text-dark dark:text-white">
+              <p className="relative z-10 mb-6 text-lg font-medium leading-relaxed text-dark dark:text-white">
                 &ldquo;{company.tagline}&rdquo;
               </p>
+              
+              {/* Interactive 3D Holographic Globe Map */}
+              <div className="mb-8 relative z-10 overflow-hidden border border-primary/10 rounded-2xl bg-linear-to-b from-primary/5 to-transparent">
+                <ThreeDGlobe />
+              </div>
+
               <div className="relative z-10 grid grid-cols-2 gap-4">
                 {highlights.map((item, i) => (
                   <motion.div

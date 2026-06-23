@@ -12,12 +12,37 @@ type FAQItemProps = {
 const FAQItem = ({ question, answer }: FAQItemProps) => {
   const [open, setOpen] = useState(false);
 
+  // Spotlight coordinates state
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    setCoords({ x: clientX - left, y: clientY - top });
+  };
+
   return (
-    <div className="border-stroke dark:border-stroke-dark mb-4 rounded-xs border bg-white dark:bg-gray-dark">
+    <div 
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative border-stroke dark:border-stroke-dark mb-4 rounded-xs border bg-white dark:bg-gray-dark overflow-hidden transition-all duration-300"
+    >
+      {/* Spotlight Hover Glow Layer */}
+      {isHovered && (
+        <div 
+          className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-0"
+          style={{
+            background: `radial-gradient(280px circle at ${coords.x}px ${coords.y}px, rgba(74, 108, 247, 0.08), transparent 80%)`
+          }}
+        />
+      )}
+
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between px-6 py-4 text-left"
+        className="relative z-10 flex w-full items-center justify-between px-6 py-4 text-left"
       >
         <span className="pr-4 text-base font-semibold text-dark dark:text-white">
           {question}
@@ -34,7 +59,7 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden"
+            className="relative z-10 overflow-hidden"
           >
             <p className="border-stroke dark:border-stroke-dark border-t px-6 py-4 text-base text-body-color dark:text-body-color-dark">
               {answer}

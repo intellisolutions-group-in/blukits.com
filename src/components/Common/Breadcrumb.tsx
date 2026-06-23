@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThreeDCanvas from "@/components/canvas/ThreeDCanvas";
 
 const Breadcrumb = ({
   pageName,
@@ -10,6 +11,8 @@ const Breadcrumb = ({
   return (
     <>
       <section className="relative z-10 overflow-hidden pt-28 lg:pt-32">
+        {/* Interactive 3D Wireframe Wave Background */}
+        <ThreeDCanvas />
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">

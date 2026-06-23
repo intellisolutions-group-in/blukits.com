@@ -13,4 +13,5 @@ export type BlogPost = {
   author: BlogAuthor;
   publishDate: string;
   readTime: string;
+  image: string;
 };

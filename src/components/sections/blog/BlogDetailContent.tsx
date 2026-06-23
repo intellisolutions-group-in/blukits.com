@@ -1,11 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Calendar, ChevronRight, Clock, User } from "lucide-react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Calendar, 
+  ChevronRight, 
+  Clock, 
+  User, 
+  Share2, 
+  Copy, 
+  Check, 
+  ArrowRight, 
+  Sparkles,
+  BookOpen
+} from "lucide-react";
 import BlogCard from "@/components/ui/BlogCard";
 import { parseServiceParagraphs } from "@/lib/service-content";
-import { PAGE_TOP_PADDING } from "@/lib/layout";
 import type { BlogPost } from "@/types/blog";
 
 type BlogDetailContentProps = {
@@ -15,147 +27,369 @@ type BlogDetailContentProps = {
 
 const BlogDetailContent = ({ post, related }: BlogDetailContentProps) => {
   const paragraphs = parseServiceParagraphs(post.content);
-  const lead = paragraphs[0] ?? "";
-  const body = paragraphs.slice(1);
+  
+  // Initials for avatar
   const initials = post.author.name
     .split(" ")
     .map((n) => n[0])
     .join("")
     .slice(0, 2);
 
+  // States
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  // Calculate scroll progress percentage
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      setScrollProgress(totalScroll > 0 ? (currentScroll / totalScroll) * 100 : 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Copy Link
+  const handleCopyLink = () => {
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  // Render Rich Paragraphs
+  const renderParagraph = (para: string, index: number) => {
+    if (para.startsWith("### ")) {
+      const headingText = para.slice(4);
+      return (
+        <motion.h3 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          key={index} 
+          className="mt-10 mb-5 text-2xl font-bold tracking-tight text-dark border-b border-stroke pb-3 dark:border-stroke-dark dark:text-white first:mt-4"
+        >
+          {headingText}
+        </motion.h3>
+      );
+    }
+    
+    if (para.startsWith("> ")) {
+      const quoteText = para.slice(2);
+      return (
+        <motion.blockquote 
+          initial={{ opacity: 0, x: -15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          key={index} 
+          className="relative my-8 border-l-4 border-primary bg-primary/5 pl-6 py-4 pr-4 italic text-lg md:text-xl text-dark/95 dark:text-white/95 rounded-r-2xl font-medium leading-relaxed shadow-xs"
+        >
+          <span className="absolute -left-3 -top-4 text-7xl text-primary/15 font-serif select-none pointer-events-none">“</span>
+          {quoteText}
+        </motion.blockquote>
+      );
+    }
+    
+    if (para.startsWith("- ")) {
+      const listItems = para.split("\n").map(line => line.replace(/^-\s*/, ""));
+      return (
+        <motion.ul 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          key={index} 
+          className="my-6 pl-1 space-y-3.5 list-none"
+        >
+          {listItems.map((item, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-base text-body-color dark:text-body-color-dark leading-relaxed">
+              <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </motion.ul>
+      );
+    }
+    
+    // Default text paragraph
+    // Add Drop Cap for the first regular paragraph
+    if (index === 0) {
+      return (
+        <p key={index} className="mb-8 text-lg leading-relaxed text-dark dark:text-white font-medium md:text-xl md:leading-9 first-letter:text-5xl first-letter:font-extrabold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:mt-1">
+          {para}
+        </p>
+      );
+    }
+    
+    return (
+      <p key={index} className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark md:text-[17px] md:leading-8">
+        {para}
+      </p>
+    );
+  };
+
   return (
     <>
-      <section className={`relative overflow-hidden pb-10 ${PAGE_TOP_PADDING}`}>
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 z-50 h-[4px] w-full bg-stroke dark:bg-stroke-dark">
+        <div 
+          className="h-full bg-primary shadow-[0_0_8px_rgba(26,115,232,0.6)] transition-all duration-75"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Hero Header */}
+      <section className="relative overflow-hidden bg-linear-to-br from-primary/5 via-transparent to-primary/0 py-16 md:py-24">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl opacity-60" />
+          <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl opacity-40" />
         </div>
 
         <div className="container relative z-10">
+          {/* Breadcrumbs */}
           <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8 flex flex-wrap items-center gap-2 text-sm"
           >
-            <Link href="/" className="text-body-color hover:text-primary dark:text-body-color-dark">
+            <Link href="/" className="text-body-color hover:text-primary dark:text-body-color-dark transition-colors">
               Home
             </Link>
-            <ChevronRight size={14} className="text-body-color" />
-            <Link href="/blog/" className="text-body-color hover:text-primary dark:text-body-color-dark">
+            <ChevronRight size={14} className="text-body-color/60" />
+            <Link href="/blog/" className="text-body-color hover:text-primary dark:text-body-color-dark transition-colors">
               Blog
             </Link>
-            <ChevronRight size={14} className="text-body-color" />
+            <ChevronRight size={14} className="text-body-color/60" />
             <span className="line-clamp-1 font-medium text-primary">{post.title}</span>
           </motion.nav>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mx-auto max-w-[800px]"
-          >
-            <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+          {/* Heading and category badge */}
+          <div className="mx-auto max-w-[900px] text-center lg:text-left">
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mb-5 inline-block rounded-full bg-primary/10 px-4.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary shadow-xs"
+            >
               {post.category}
-            </span>
-            <h1 className="mb-6 text-3xl font-bold leading-tight text-dark dark:text-white md:text-4xl lg:text-[42px]">
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mb-8 text-3xl font-extrabold leading-tight text-dark dark:text-white sm:text-4xl md:text-5xl lg:text-[50px] tracking-tight"
+            >
               {post.title}
-            </h1>
+            </motion.h1>
 
-            <div className="mb-8 flex flex-wrap items-center gap-6 border-b border-stroke pb-8 dark:border-stroke-dark">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+            {/* Quick metadata panel */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-body-color dark:text-body-color-dark border-t border-stroke/60 pt-6 dark:border-stroke-dark/40"
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
                   {initials}
                 </div>
-                <div>
-                  <p className="flex items-center gap-1 font-medium text-dark dark:text-white">
-                    <User size={14} className="text-primary" />
-                    {post.author.name}
-                  </p>
-                  <p className="text-sm text-body-color dark:text-body-color-dark">
-                    {post.author.designation}
-                  </p>
-                </div>
+                <span className="font-semibold text-dark dark:text-white">{post.author.name}</span>
               </div>
-              <span className="inline-flex items-center gap-1 text-sm text-body-color dark:text-body-color-dark">
-                <Calendar size={14} className="text-primary" />
+              
+              <div className="h-4 w-[1px] bg-stroke dark:bg-stroke-dark hidden sm:block" />
+
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={15} className="text-primary" />
                 {new Date(post.publishDate).toLocaleDateString("en-IN", {
                   day: "numeric",
                   month: "long",
                   year: "numeric",
                 })}
               </span>
-              <span className="inline-flex items-center gap-1 text-sm text-body-color dark:text-body-color-dark">
-                <Clock size={14} className="text-primary" />
+
+              <div className="h-4 w-[1px] bg-stroke dark:bg-stroke-dark hidden sm:block" />
+
+              <span className="inline-flex items-center gap-1.5">
+                <Clock size={15} className="text-primary" />
                 {post.readTime}
               </span>
-            </div>
-
-            <div className="mb-6 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="dark:bg-bg-color-dark/40 bg-gray-light/60 pb-16 md:pb-20">
-        <div className="container">
-          <div className="mx-auto max-w-[800px]">
-            {lead && (
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="shadow-two mb-8 rounded-2xl border-l-4 border-primary bg-white p-6 md:p-8 dark:bg-dark dark:shadow-three"
-              >
-                <p className="text-base leading-relaxed text-dark dark:text-white md:text-lg md:leading-8">
-                  {lead}
-                </p>
-              </motion.div>
-            )}
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="shadow-two space-y-6 rounded-2xl bg-white p-6 md:p-8 dark:bg-dark dark:shadow-three"
-            >
-              {body.map((para) => (
-                <p
-                  key={para.slice(0, 60)}
-                  className="text-base leading-relaxed text-body-color dark:text-body-color-dark md:text-[17px] md:leading-8"
-                >
-                  {para}
-                </p>
-              ))}
             </motion.div>
-
-            <div className="mt-10 rounded-2xl bg-primary/5 p-6 text-center dark:bg-primary/10 md:p-8">
-              <p className="mb-4 text-lg font-semibold text-dark dark:text-white">
-                Planning a software project?
-              </p>
-              <p className="mb-6 text-body-color dark:text-body-color-dark">
-                BluKits Technologies can help you turn ideas into dependable applications.
-              </p>
-              <Link
-                href="/contact/"
-                className="inline-block rounded-xs bg-primary px-8 py-3 text-base font-semibold text-white hover:bg-primary/90"
-              >
-                Contact Our Team
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
+      {/* Main Layout Area */}
+      <section className="pb-24 pt-10 dark:bg-black/20">
+        <div className="container">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            
+            {/* LEFT: Blog content (8 Columns) */}
+            <div className="lg:col-span-8">
+              {post.image && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="group relative mb-12 aspect-[21/10] w-full overflow-hidden rounded-3xl bg-linear-to-br from-primary/10 to-primary/5 shadow-two dark:shadow-three"
+                >
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-102"
+                    priority
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+                </motion.div>
+              )}
+
+              {/* Parsed Blog Content */}
+              <div className="prose prose-lg dark:prose-invert max-w-none text-base md:text-lg">
+                {paragraphs.map((para, index) => renderParagraph(para, index))}
+              </div>
+
+              {/* Share actions in content block */}
+              <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-y border-stroke py-6 dark:border-stroke-dark/60">
+                <div className="flex items-center gap-2">
+                  <BookOpen size={16} className="text-primary" />
+                  <span className="text-sm font-medium text-dark dark:text-white">Tags:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {post.tags.map(tag => (
+                      <span key={tag} className="rounded-md bg-gray-light px-2.5 py-1 text-xs font-semibold text-body-color dark:bg-dark dark:text-body-color-dark">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5">
+                  <span className="text-sm font-medium text-body-color">Share:</span>
+                  <button 
+                    onClick={handleCopyLink} 
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-light text-body-color hover:bg-primary hover:text-white dark:bg-dark dark:text-body-color-dark dark:hover:bg-primary dark:hover:text-white transition-all shadow-xs"
+                    title="Copy Link"
+                  >
+                    {copied ? <Check size={16} /> : <Copy size={16} />}
+                  </button>
+                  <a 
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${typeof window !== "undefined" ? encodeURIComponent(window.location.href) : ""}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-light text-body-color hover:bg-primary hover:text-white dark:bg-dark dark:text-body-color-dark dark:hover:bg-primary dark:hover:text-white transition-all shadow-xs"
+                    title="Share on LinkedIn"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT: Sticky Sidebar (4 Columns) */}
+            <div className="lg:col-span-4">
+              <div className="sticky top-28 space-y-8">
+                
+                {/* Author Info Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="rounded-3xl border border-stroke bg-white p-8 shadow-two dark:border-stroke-dark dark:bg-dark dark:shadow-three"
+                >
+                  <h4 className="mb-6 text-lg font-bold text-dark dark:text-white">Written By</h4>
+                  <div className="flex items-center gap-4 border-b border-stroke pb-6 dark:border-stroke-dark">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-xl font-bold text-primary shadow-xs">
+                      {initials}
+                    </div>
+                    <div>
+                      <h5 className="text-base font-bold text-dark dark:text-white">{post.author.name}</h5>
+                      <p className="text-sm text-body-color dark:text-body-color-dark font-medium">{post.author.designation}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-6">
+                    <p className="text-sm leading-relaxed text-body-color dark:text-body-color-dark">
+                      An expert in {post.category.toLowerCase()} helping businesses leverage modern methodologies and technology structures to achieve long-term scale and efficiency.
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Quick Share widget */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="rounded-3xl border border-stroke bg-white p-6 shadow-two dark:border-stroke-dark dark:bg-dark dark:shadow-three"
+                >
+                  <h4 className="mb-4 text-base font-bold text-dark dark:text-white flex items-center gap-2">
+                    <Share2 size={16} className="text-primary" />
+                    Share This Article
+                  </h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button 
+                      onClick={handleCopyLink} 
+                      className="flex items-center justify-center gap-2 rounded-xl border border-stroke py-3.5 text-xs font-semibold text-dark hover:bg-gray-light dark:border-stroke-dark dark:text-white dark:hover:bg-black/30 transition-all"
+                    >
+                      {copied ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
+                      {copied ? "Copied!" : "Copy Link"}
+                    </button>
+                    
+                    <a 
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${typeof window !== "undefined" ? encodeURIComponent(window.location.href) : ""}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-xl border border-stroke py-3.5 text-xs font-semibold text-dark hover:bg-gray-light dark:border-stroke-dark dark:text-white dark:hover:bg-black/30 transition-all"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Call-to-action Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="group relative overflow-hidden rounded-3xl bg-linear-to-br from-primary to-[#1d5fb9] p-8 text-white shadow-feature-2"
+                >
+                  <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/10 blur-2xl group-hover:bg-white/20 transition-all" />
+                  <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/5 blur-2xl" />
+
+                  <div className="relative z-10">
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-white">
+                      <Sparkles size={22} className="animate-pulse" />
+                    </div>
+                    
+                    <h4 className="mb-4 text-xl font-bold leading-snug">Have a Custom Project in Mind?</h4>
+                    <p className="mb-6 text-sm text-white/80 leading-relaxed">
+                      Let's build a secure, highly scalable solution customized to solve your specific workflows and drive operational growth.
+                    </p>
+                    
+                    <Link
+                      href="/contact/"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white py-3.5 text-sm font-bold text-primary transition-all duration-300 hover:bg-gray-light hover:gap-3 shadow-md"
+                    >
+                      Talk to our Experts
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </motion.div>
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Related Posts */}
       {related.length > 0 && (
-        <section className="py-16 md:py-20">
+        <section className="border-t border-stroke py-20 dark:border-stroke-dark/40 bg-gray-light/20 dark:bg-black/10">
           <div className="container">
-            <h2 className="mb-8 text-center text-2xl font-bold text-dark dark:text-white md:text-3xl">
+            <h2 className="mb-12 text-center text-3xl font-extrabold text-dark dark:text-white tracking-tight">
               Related Articles
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

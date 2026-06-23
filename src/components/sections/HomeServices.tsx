@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { services } from "@/lib/data";
+import SystemArchitecture from "@/components/sections/services/SystemArchitecture";
 
 const stats = [
   { value: "18+", label: "Services" },
@@ -98,6 +99,9 @@ const HomeServices = () => {
             </div>
           ))}
         </div>
+
+        {/* Interactive Architecture Flow Blueprint */}
+        <SystemArchitecture />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import type { BlogPost } from "@/types/blog";
@@ -35,8 +36,17 @@ const BlogCard = ({ post, delay = 0, featured = false }: BlogCardProps) => {
           featured ? "md:w-2/5" : "aspect-[16/10] w-full"
         }`}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="rounded-full bg-primary/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        )}
+        <div className="absolute top-4 left-4 z-10">
+          <span className="rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary shadow-sm backdrop-blur-xs dark:bg-dark/95">
             {post.category}
           </span>
         </div>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020813" />
+      <stop offset="50%" stop-color="#0b1528" />
+      <stop offset="100%" stop-color="#010408" />
+    </linearGradient>
+
+    <!-- Blue / Cyan Gradient -->
+    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Red / Purple Gradient -->
+    <linearGradient id="securityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff0844" />
+      <stop offset="100%" stop-color="#ffb199" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1" />
+    </pattern>
+
+    <!-- Neon Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+
+  <!-- Background Glow -->
+  <circle cx="400" cy="250" r="220" fill="#4facfe" opacity="0.06" filter="url(#glow)" />
+  <circle cx="400" cy="250" r="120" fill="#ff0844" opacity="0.06" filter="url(#glow)" />
+
+  <!-- Abstract Radar / Security circles -->
+  <g opacity="0.25">
+    <circle cx="400" cy="250" r="180" fill="none" stroke="url(#cyberGrad)" stroke-width="1.5" stroke-dasharray="10, 5" />
+    <circle cx="400" cy="250" r="140" fill="none" stroke="url(#securityGrad)" stroke-width="0.75" />
+    <circle cx="400" cy="250" r="90" fill="none" stroke="url(#cyberGrad)" stroke-width="0.75" stroke-dasharray="2, 4" />
+  </g>
+
+  <!-- Binary Stream and Node Network -->
+  <g opacity="0.15" fill="#00f2fe" font-family="monospace" font-size="12">
+    <text x="120" y="150">01101001 01101110 01110011</text>
+    <text x="120" y="200">01110011 01100101 01100011</text>
+    <text x="120" y="250">01110101 01110010 01100101</text>
+    <text x="120" y="300">01100100 01100001 01110100</text>
+    
+    <text x="520" y="150">01100001 01110000 01110000</text>
+    <text x="520" y="200">01110011 01100101 01100011</text>
+    <text x="520" y="250">01101000 01110100 01110100</text>
+    <text x="520" y="300">01110000 01110011 00111010</text>
+  </g>
+
+  <!-- Giant Cybersecurity Shield and Lock -->
+  <g transform="translate(300, 100)" filter="url(#glow)">
+    <!-- Shield Graphic -->
+    <path d="M 100 0 
+             C 160 10, 200 40, 200 100 
+             C 200 180, 150 240, 100 280 
+             C 50 240, 0 180, 0 100 
+             C 0 40, 40 10, 100 0 Z" 
+          fill="#0c1830" 
+          stroke="url(#cyberGrad)" 
+          stroke-width="3" />
+
+    <!-- Innermost shield shield border -->
+    <path d="M 100 15 
+             C 150 25, 185 50, 185 100 
+             C 185 170, 140 225, 100 262 
+             C 60 225, 15 170, 15 100 
+             C 15 50, 50 25, 100 15 Z" 
+          fill="none" 
+          stroke="url(#securityGrad)" 
+          stroke-width="1.5" 
+          stroke-opacity="0.8" />
+          
+    <!-- Glowing Lock Logo in the Center -->
+    <g transform="translate(68, 90)">
+      <!-- Lock Shackle -->
+      <path d="M 16 32 L 16 20 C 16 9, 48 9, 48 20 L 48 32" fill="none" stroke="url(#cyberGrad)" stroke-width="6" stroke-linecap="round" />
+      <!-- Lock Body -->
+      <rect x="0" y="30" width="64" height="46" rx="8" fill="#14264b" stroke="url(#cyberGrad)" stroke-width="2" />
+      <!-- Keyhole -->
+      <circle cx="32" cy="48" r="5" fill="url(#securityGrad)" />
+      <path d="M 32 53 L 32 63" stroke="url(#securityGrad)" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Glowing Accent Sparks -->
+  <circle cx="280" cy="180" r="4.5" fill="#00f2fe" filter="url(#glow)" />
+  <circle cx="520" cy="180" r="4.5" fill="#ff0844" filter="url(#glow)" />
+  <circle cx="400" cy="70" r="5" fill="#00f2fe" filter="url(#glow)" />
+  <circle cx="400" cy="410" r="5" fill="#ff0844" filter="url(#glow)" />
+</svg>

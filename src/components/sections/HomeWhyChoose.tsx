@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import SectionTitle from "@/components/Common/SectionTitle";
 import company from "@/data/company.json";
@@ -16,45 +17,69 @@ const points = [
 
 const HomeWhyChoose = () => {
   return (
-    <section className="dark:bg-bg-color-dark bg-gray-light py-16 md:py-20 lg:py-28">
+    <section className="dark:bg-bg-color-dark bg-gray-light py-16 md:py-20 lg:py-28 overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
+          
+          {/* Left Column: Title, Lists & Button with slide-in animation */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+          >
             <SectionTitle
               title="Why Businesses Choose BluKits"
               paragraph={`${company.brandName} combines technical depth with practical delivery to help organisations across ${company.country} build software that lasts.`}
               mb="40px"
             />
             <ul className="space-y-4">
-              {points.map((point) => (
-                <li key={point} className="flex items-start gap-3">
+              {points.map((point, index) => (
+                <motion.li 
+                  key={point} 
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.06 }}
+                  className="flex items-start gap-3"
+                >
                   <CheckCircle2 className="mt-1 shrink-0 text-primary" size={20} />
                   <span className="text-base text-body-color dark:text-body-color-dark">
                     {point}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </ul>
+            
             <Link
               href="/why-choose-us/"
-              className="mt-8 inline-block rounded-xs bg-primary px-8 py-4 text-base font-semibold text-white hover:bg-primary/90"
+              className="mt-8 inline-block rounded-xs bg-primary px-8 py-4 text-base font-semibold text-white hover:bg-primary/90 transition-colors"
             >
               Learn More
             </Link>
-          </div>
-          <div className="shadow-three dark:bg-gray-dark rounded-xs bg-white p-8 md:p-12">
+          </motion.div>
+
+          {/* Right Column: Engineering Purpose Card with spring push effect */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="shadow-three dark:bg-gray-dark rounded-xs bg-white p-8 md:p-12"
+          >
             <h3 className="mb-4 text-2xl font-bold text-dark dark:text-white">
               Engineering with Purpose
             </h3>
-            <p className="mb-4 text-base text-body-color dark:text-body-color-dark">
+            <p className="mb-4 text-base text-body-color dark:text-body-color-dark leading-relaxed">
               We align technology decisions with business outcomes. Every project begins with
               understanding your users, workflows, and constraints before writing code.
             </p>
-            <p className="text-base text-body-color dark:text-body-color-dark">
+            <p className="text-base text-body-color dark:text-body-color-dark leading-relaxed">
               Our teams work as an extension of your organisation, providing the expertise
               needed to move from concept to production with confidence.
             </p>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

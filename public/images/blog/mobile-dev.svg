@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14" />
+      <stop offset="50%" stop-color="#0b172a" />
+      <stop offset="100%" stop-color="#02050a" />
+    </linearGradient>
+
+    <!-- Blue Gradient -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Violet / Purple Gradient -->
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b92b27" />
+      <stop offset="100%" stop-color="#1565c0" />
+    </linearGradient>
+    
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f355da" />
+      <stop offset="100%" stop-color="#7000ff" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1" />
+    </pattern>
+
+    <!-- Neon Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+
+  <!-- Background light splash -->
+  <circle cx="280" cy="250" r="160" fill="#00f2fe" opacity="0.06" filter="url(#glow)" />
+  <circle cx="520" cy="250" r="160" fill="#f355da" opacity="0.06" filter="url(#glow)" />
+
+  <!-- LEFT PHONE: Native Concept -->
+  <g transform="translate(180, 80)">
+    <!-- Phone outline -->
+    <rect x="0" y="0" width="180" height="340" rx="24" fill="#0e1726" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)" />
+    <!-- Screen outline inner -->
+    <rect x="8" y="8" width="164" height="324" rx="18" fill="#131e35" />
+    <!-- Notch -->
+    <rect x="50" y="8" width="80" height="15" rx="7" fill="#0e1726" />
+    
+    <!-- Phone contents: Native Widgets -->
+    <rect x="20" y="50" width="140" height="35" rx="6" fill="#1b2a47" opacity="0.8" />
+    <circle cx="35" cy="67" r="8" fill="url(#blueGrad)" />
+    <rect x="50" y="64" width="70" height="6" rx="3" fill="#324970" />
+
+    <rect x="20" y="100" width="140" height="100" rx="8" fill="#1b2a47" opacity="0.8" />
+    <path d="M30 170 C50 140, 70 120, 90 145 T150 130" fill="none" stroke="url(#blueGrad)" stroke-width="2" stroke-linecap="round" />
+    
+    <text x="90" y="270" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">NATIVE CODE</text>
+    <text x="90" y="290" fill="#00f2fe" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">Swift &amp; Kotlin</text>
+  </g>
+
+  <!-- RIGHT PHONE: Cross-Platform Concept -->
+  <g transform="translate(440, 80)">
+    <!-- Phone outline -->
+    <rect x="0" y="0" width="180" height="340" rx="24" fill="#0e1726" stroke="url(#neonGrad)" stroke-width="2" filter="url(#glow)" />
+    <!-- Screen outline inner -->
+    <rect x="8" y="8" width="164" height="324" rx="18" fill="#131e35" />
+    <!-- Notch -->
+    <rect x="50" y="8" width="80" height="15" rx="7" fill="#0e1726" />
+    
+    <!-- Phone contents: Cross-Platform widgets -->
+    <rect x="20" y="50" width="140" height="70" rx="8" fill="#1f1837" opacity="0.8" />
+    <circle cx="45" cy="85" r="16" fill="url(#neonGrad)" />
+    <rect x="70" y="75" width="70" height="6" rx="3" fill="#ffffff" fill-opacity="0.8" />
+    <rect x="70" y="88" width="50" height="6" rx="3" fill="#463972" />
+
+    <rect x="20" y="135" width="140" height="65" rx="8" fill="#1f1837" opacity="0.8" />
+    <line x1="35" y1="167" x2="145" y2="167" stroke="#463972" stroke-width="2" />
+    <circle cx="85" cy="167" r="6" fill="#f355da" />
+
+    <text x="90" y="270" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">SHARED CODE</text>
+    <text x="90" y="290" fill="#f355da" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">Flutter &amp; React Native</text>
+  </g>
+
+  <!-- Center Floating abstract Gear/Brackets -->
+  <g transform="translate(370, 220)" filter="url(#glow)">
+    <circle cx="30" cy="30" r="32" fill="#0a0f1d" stroke="url(#blueGrad)" stroke-width="2" />
+    <text x="30" y="38" fill="#ffffff" font-family="'Inter', sans-serif" font-size="24" font-weight="bold" text-anchor="middle">VS</text>
+  </g>
+
+  <!-- Ornaments -->
+  <circle cx="340" cy="120" r="3" fill="#00f2fe" />
+  <circle cx="460" cy="120" r="3" fill="#f355da" />
+  <circle cx="330" cy="390" r="4.5" fill="#f355da" opacity="0.6" filter="url(#glow)" />
+  <circle cx="470" cy="390" r="4.5" fill="#00f2fe" opacity="0.6" filter="url(#glow)" />
+</svg>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -30,6 +31,16 @@ const ServiceCard = ({
   const isFeatured = variant === "featured";
   const isCompact = variant === "compact";
 
+  // Spotlight coordinates state
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    setCoords({ x: clientX - left, y: clientY - top });
+  };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 28 }}
@@ -37,6 +48,9 @@ const ServiceCard = ({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -6 }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={`group relative h-full overflow-hidden rounded-xl border border-transparent bg-white transition-shadow duration-300 dark:bg-dark ${
         isFeatured
           ? "shadow-feature-2 p-8 md:p-10 lg:p-12"
@@ -45,6 +59,16 @@ const ServiceCard = ({
             : "shadow-two p-8 dark:shadow-three"
       } hover:shadow-feature-2 dark:hover:shadow-gray-dark`}
     >
+      {/* Spotlight Hover Glow Layer */}
+      {isHovered && (
+        <div 
+          className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-0"
+          style={{
+            background: `radial-gradient(350px circle at ${coords.x}px ${coords.y}px, rgba(74, 108, 247, 0.12), transparent 80%)`
+          }}
+        />
+      )}
+
       <div className="pointer-events-none absolute inset-0 rounded-xl bg-linear-to-br from-primary/0 via-primary/0 to-primary/0 opacity-0 transition-opacity duration-500 group-hover:from-primary/5 group-hover:via-primary/10 group-hover:to-primary/5 group-hover:opacity-100" />
 
       <div
