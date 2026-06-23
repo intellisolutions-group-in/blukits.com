@@ -14,7 +14,7 @@ import ThreeDGlobe from "@/components/canvas/ThreeDGlobe";
 
 const highlights = [
   { icon: Calendar, label: "Established", value: String(company.establishedYear) },
-  { icon: Globe, label: "Domain Since", value: company.domainRegisteredDate.split("-")[0] },
+  { icon: Globe, label: "Online Since", value: company.domainRegisteredDate.split("-")[0] },
   { icon: Building2, label: "Headquarters", value: "Vadodara, India" },
   { icon: MapPin, label: "Serving", value: company.country },
 ];
