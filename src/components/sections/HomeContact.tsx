@@ -3,7 +3,7 @@
 import SectionTitle from "@/components/Common/SectionTitle";
 import ContactForm from "@/components/ui/ContactForm";
 import company from "@/data/company.json";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 
 const HomeContact = () => {
   return (
@@ -34,24 +34,6 @@ const HomeContact = () => {
                     <a href={`mailto:${company.email}`} className="text-body-color hover:text-primary dark:text-body-color-dark">
                       {company.email}
                     </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Phone className="mt-1 text-primary" size={20} />
-                  <div>
-                    <p className="font-medium text-dark dark:text-white">Phone</p>
-                    <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="text-body-color hover:text-primary dark:text-body-color-dark">
-                      {company.phone}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <MapPin className="mt-1 text-primary" size={20} />
-                  <div>
-                    <p className="font-medium text-dark dark:text-white">Office</p>
-                    <p className="text-body-color dark:text-body-color-dark">
-                      4th Floor, Alkapuri Arcade, RC Dutt Road, Vadodara, Gujarat 390007, India
-                    </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">

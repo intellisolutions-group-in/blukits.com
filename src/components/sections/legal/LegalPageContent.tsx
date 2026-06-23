@@ -6,8 +6,6 @@ import {
   ChevronRight,
   FileText,
   Mail,
-  MapPin,
-  Phone,
   Scale,
   Shield,
 } from "lucide-react";
@@ -214,31 +212,6 @@ const LegalPageContent = ({ data, pageSlug }: LegalPageContentProps) => {
                             </p>
                           </div>
                         </a>
-                        <a
-                          href={`tel:${company.phone.replace(/\s/g, "")}`}
-                          className="hover:border-primary/30 flex items-center gap-3 rounded-xl border border-stroke bg-gray-light/50 px-4 py-3 transition-colors dark:border-stroke-dark dark:bg-white/5"
-                        >
-                          <Phone size={18} className="shrink-0 text-primary" />
-                          <div>
-                            <p className="text-xs text-body-color dark:text-body-color-dark">Phone</p>
-                            <p className="text-sm font-medium text-dark dark:text-white">
-                              {company.phone}
-                            </p>
-                          </div>
-                        </a>
-                        {hq && (
-                          <div className="flex items-start gap-3 rounded-xl border border-stroke bg-gray-light/50 px-4 py-3 sm:col-span-2 dark:border-stroke-dark dark:bg-white/5">
-                            <MapPin size={18} className="mt-0.5 shrink-0 text-primary" />
-                            <div>
-                              <p className="text-xs text-body-color dark:text-body-color-dark">
-                                Registered office
-                              </p>
-                              <p className="text-sm font-medium leading-relaxed text-dark dark:text-white">
-                                {hq.address}
-                              </p>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     )}
                   </motion.article>

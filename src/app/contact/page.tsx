@@ -7,7 +7,7 @@ import company from "@/data/company.json";
 
 export const metadata = buildMetadata({
   title: "Contact Us",
-  description: `Contact ${company.brandName} for software development enquiries. Email ${company.email} or call ${company.phone}.`,
+  description: `Contact ${company.brandName} for software development enquiries. Email ${company.email} and our team will respond promptly.`,
   keywords: ["contact BluKits", "software development enquiry", "IT company contact"],
   path: "/contact/",
 });

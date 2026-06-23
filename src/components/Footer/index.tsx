@@ -102,12 +102,6 @@ const Footer = () => {
                     {company.email}
                   </a>
                 </li>
-                <li>
-                  <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-primary">
-                    {company.phone}
-                  </a>
-                </li>
-                <li>4th Floor, Alkapuri Arcade, RC Dutt Road, Vadodara, Gujarat 390007</li>
               </ul>
             </div>
           </div>

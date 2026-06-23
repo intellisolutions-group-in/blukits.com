@@ -3,7 +3,7 @@
 import ContactForm from "@/components/ui/ContactForm";
 import company from "@/data/company.json";
 import { offices } from "@/lib/data";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 
 const ContactPageContent = () => {
   return (
@@ -37,15 +37,6 @@ const ContactPageContent = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <Phone className="mt-1 text-primary" size={20} />
-                  <div>
-                    <p className="font-medium text-dark dark:text-white">Phone</p>
-                    <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="text-body-color hover:text-primary dark:text-body-color-dark">
-                      {company.phone}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
                   <Clock className="mt-1 text-primary" size={20} />
                   <div>
                     <p className="font-medium text-dark dark:text-white">Business Hours</p>
@@ -56,28 +47,7 @@ const ContactPageContent = () => {
                 </li>
               </ul>
             </div>
-            {offices.map((office) => (
-              <div
-                key={office.id}
-                className="shadow-three dark:bg-gray-dark mb-6 rounded-xs bg-white px-8 py-8"
-              >
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-primary" size={20} />
-                  <div>
-                    <p className="font-semibold text-dark dark:text-white">{office.name}</p>
-                    <p className="text-body-color dark:text-body-color-dark">{office.address}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-            <div className="shadow-three dark:bg-gray-dark rounded-xs bg-white px-8 py-8">
-              <h3 className="mb-4 text-lg font-bold text-dark dark:text-white">Map</h3>
-              <div className="flex h-48 items-center justify-center rounded-xs bg-gray-light dark:bg-dark">
-                <p className="text-sm text-body-color dark:text-body-color-dark">
-                  Vadodara, Gujarat, India
-                </p>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

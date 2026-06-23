@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin } from "lucide-react";
 import company from "@/data/company.json";
 import { offices } from "@/lib/data";
 
@@ -52,20 +52,6 @@ const AboutLocation = () => {
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-dark dark:text-white">Phone</p>
-                    <a
-                      href={`tel:${company.phone.replace(/\s/g, "")}`}
-                      className="text-body-color hover:text-primary dark:text-body-color-dark"
-                    >
-                      {company.phone}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Clock size={18} />
                   </div>
                   <div>
@@ -100,9 +86,6 @@ const AboutLocation = () => {
                       <h3 className="text-lg font-bold text-dark dark:text-white">
                         {office.name}
                       </h3>
-                      <p className="mt-1 text-body-color dark:text-body-color-dark">
-                        {office.address}
-                      </p>
                     </div>
                   </div>
                 </div>

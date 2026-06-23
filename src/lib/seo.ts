@@ -42,12 +42,10 @@ export function organizationSchema() {
     name: company.brandName,
     url: company.url,
     email: company.email,
-    telephone: company.phone,
     foundingDate: String(company.establishedYear),
     description: company.description,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "4th Floor, Alkapuri Arcade, RC Dutt Road",
       addressLocality: "Vadodara",
       addressRegion: "Gujarat",
       postalCode: "390007",
