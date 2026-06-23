@@ -65,7 +65,6 @@ const CareerFormModal = ({ job, onClose }: CareerFormModalProps) => {
     }
 
     setLoading(false);
-    onClose();
     setSuccessOpen(true);
     formEl.reset();
   };
@@ -73,120 +72,126 @@ const CareerFormModal = ({ job, onClose }: CareerFormModalProps) => {
   return (
     <>
       <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[99998] flex items-center justify-center bg-black/50 px-4 py-8"
-          onClick={onClose}
-        >
+        {!successOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-three dark:bg-gray-dark md:p-8"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[99998] flex items-center justify-center bg-black/50 px-4 py-8"
+            onClick={onClose}
           >
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              className="absolute right-4 top-4 text-body-color hover:text-primary"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-three dark:bg-gray-dark md:p-8"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X size={20} />
-            </button>
-            <h3 className="mb-2 text-xl font-bold text-dark dark:text-white">
-              Apply for {job.title}
-            </h3>
-            <p className="mb-6 text-sm text-body-color dark:text-body-color-dark">
-              {job.department} | {job.location}
-            </p>
-            <form onSubmit={handleSubmit}>
-              <input type="hidden" name="jobId" value={job.id} />
-              <input type="hidden" name="jobTitle" value={job.title} />
-              <div className="space-y-4">
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Full Name
-                  </label>
-                  <input name="fullName" type="text" className={inputClass} />
-                  {errors.fullName && (
-                    <p className="mt-1 text-sm text-red-500">{errors.fullName}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Email
-                  </label>
-                  <input name="email" type="email" className={inputClass} />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Phone
-                  </label>
-                  <input name="phone" type="tel" className={inputClass} />
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Current Location
-                  </label>
-                  <input name="location" type="text" className={inputClass} />
-                  {errors.location && (
-                    <p className="mt-1 text-sm text-red-500">{errors.location}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Resume (PDF/DOC, max 5MB)
-                  </label>
-                  <input
-                    name="resume"
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    className={inputClass}
-                  />
-                  {errors.resume && (
-                    <p className="mt-1 text-sm text-red-500">{errors.resume}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
-                    Cover Letter (optional)
-                  </label>
-                  <textarea
-                    name="coverLetter"
-                    rows={4}
-                    className={`${inputClass} resize-none`}
-                  />
-                </div>
-              </div>
               <button
-                type="submit"
-                disabled={loading}
-                className="mt-6 w-full rounded-xs bg-primary py-3 text-base font-medium text-white hover:bg-primary/90 disabled:opacity-70"
+                type="button"
+                onClick={onClose}
+                aria-label="Close"
+                className="absolute right-4 top-4 text-body-color hover:text-primary"
               >
-                {loading ? (
-                  <span className="inline-flex items-center justify-center gap-2">
-                    <Loader2 className="animate-spin" size={18} />
-                    Submitting...
-                  </span>
-                ) : (
-                  "Submit Application"
-                )}
+                <X size={20} />
               </button>
-            </form>
+              <h3 className="mb-2 text-xl font-bold text-dark dark:text-white">
+                Apply for {job.title}
+              </h3>
+              <p className="mb-6 text-sm text-body-color dark:text-body-color-dark">
+                {job.department} | {job.location}
+              </p>
+              <form onSubmit={handleSubmit}>
+                <input type="hidden" name="jobId" value={job.id} />
+                <input type="hidden" name="jobTitle" value={job.title} />
+                <div className="space-y-4">
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Full Name
+                    </label>
+                    <input name="fullName" type="text" className={inputClass} />
+                    {errors.fullName && (
+                      <p className="mt-1 text-sm text-red-500">{errors.fullName}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Email
+                    </label>
+                    <input name="email" type="email" className={inputClass} />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Phone
+                    </label>
+                    <input name="phone" type="tel" className={inputClass} />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Current Location
+                    </label>
+                    <input name="location" type="text" className={inputClass} />
+                    {errors.location && (
+                      <p className="mt-1 text-sm text-red-500">{errors.location}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Resume (PDF/DOC, max 5MB)
+                    </label>
+                    <input
+                      name="resume"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      className={inputClass}
+                    />
+                    {errors.resume && (
+                      <p className="mt-1 text-sm text-red-500">{errors.resume}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+                      Cover Letter (optional)
+                    </label>
+                    <textarea
+                      name="coverLetter"
+                      rows={4}
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-6 w-full rounded-xs bg-primary py-3 text-base font-medium text-white hover:bg-primary/90 disabled:opacity-70"
+                >
+                  {loading ? (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Loader2 className="animate-spin" size={18} />
+                      Submitting...
+                    </span>
+                  ) : (
+                    "Submit Application"
+                  )}
+                </button>
+              </form>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </AnimatePresence>
       <ThankYouModal
         isOpen={successOpen}
         message="Thank you! Our team will review your application and reach you soon."
-        onClose={() => setSuccessOpen(false)}
+        onClose={() => {
+          setSuccessOpen(false);
+          onClose();
+        }}
       />
     </>
   );
