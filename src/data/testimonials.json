@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Rahul Mehta",
+    "designation": "Operations Director",
+    "content": "BluKits Technologies delivered our internal workflow platform on schedule with clear milestones and practical communication throughout. The team understood our business context and translated requirements into a stable application our staff use daily."
+  },
+  {
+    "id": 2,
+    "name": "Priya Shah",
+    "designation": "Product Manager",
+    "content": "We engaged BluKits for a customer-facing web application and appreciated their structured approach to discovery, design handoff, and iterative releases. The final product is performant, maintainable, and aligned with our roadmap."
+  },
+  {
+    "id": 3,
+    "name": "Ankit Desai",
+    "designation": "IT Head",
+    "content": "From architecture review to deployment support, BluKits demonstrated strong engineering discipline. Their documentation and knowledge transfer made it easy for our internal team to take ownership after go-live."
+  },
+  {
+    "id": 4,
+    "name": "Neha Patel",
+    "designation": "Business Analyst",
+    "content": "The BluKits team was responsive, detail-oriented, and transparent about trade-offs during development. We valued their practical recommendations that balanced speed with long-term maintainability."
+  },
+  {
+    "id": 5,
+    "name": "Vikram Joshi",
+    "designation": "Founder",
+    "content": "Our mobile application launch was smooth thanks to BluKits Technologies. They handled complex integrations carefully and kept us informed at every stage of the project lifecycle."
+  },
+  {
+    "id": 6,
+    "name": "Sneha Iyer",
+    "designation": "Digital Transformation Lead",
+    "content": "BluKits helped us modernise a legacy desktop tool into a cloud-ready solution. Their phased delivery model reduced risk and allowed our users to adapt gradually without disruption."
+  },
+  {
+    "id": 7,
+    "name": "Karan Malhotra",
+    "designation": "Engineering Manager",
+    "content": "Quality assurance was thorough and development practices were professional. BluKits integrated well with our existing processes and delivered code that met our review standards."
+  },
+  {
+    "id": 8,
+    "name": "Divya Nair",
+    "designation": "Programme Coordinator",
+    "content": "We required a dependable partner for ongoing application maintenance and BluKits has consistently met our service expectations. Issue resolution is prompt and communication remains clear."
+  },
+  {
+    "id": 9,
+    "name": "Arjun Kapoor",
+    "designation": "Solutions Architect",
+    "content": "BluKits Technologies brought thoughtful API design and integration expertise to our enterprise initiative. Their technical depth and collaborative working style made them a strong delivery partner."
+  },
+  {
+    "id": 10,
+    "name": "Meera Reddy",
+    "designation": "Customer Experience Lead",
+    "content": "The UI and UX work delivered by BluKits improved usability across our key workflows. The interface feels modern, accessible, and aligned with how our users actually work day to day."
+  }
+]

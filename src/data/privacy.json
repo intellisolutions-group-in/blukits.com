@@ -1,0 +1,82 @@
+{
+  "title": "Privacy Policy",
+  "badge": "Legal",
+  "description": "How BluKits Technologies collects, uses, and protects your information.",
+  "intro": "BluKits Technologies respects your privacy. This policy explains what information we collect through our website, contact forms, and career applications, and how we use and safeguard that data.",
+  "relatedPage": {
+    "title": "Terms of Service",
+    "href": "/terms/",
+    "description": "Rules governing use of our website and services."
+  },
+  "sections": [
+    {
+      "id": "information-we-collect",
+      "title": "Information We Collect",
+      "content": "We collect information that you voluntarily provide when interacting with our website or communicating with our team.",
+      "points": [
+        "Contact and inquiry forms: name, email, phone number, subject, and message content.",
+        "Career applications: full name, email, phone, location, resume files, and role applied for.",
+        "Service inquiries: project details shared through contact or consultation forms.",
+        "Technical data: basic browser type, device information, and pages visited for site performance and security."
+      ]
+    },
+    {
+      "id": "how-we-use-information",
+      "title": "How We Use Information",
+      "content": "We use collected information only for legitimate business purposes related to our software development services.",
+      "points": [
+        "Responding to enquiries, support requests, and project discussions.",
+        "Processing job applications and recruitment communication.",
+        "Preparing proposals, estimates, and service-related follow-ups.",
+        "Improving website performance, security, and user experience.",
+        "Complying with applicable legal and regulatory obligations."
+      ]
+    },
+    {
+      "id": "sharing-and-disclosure",
+      "title": "Sharing and Disclosure",
+      "content": "We do not sell your personal information. We may share limited data only when necessary to operate our business or meet legal requirements.",
+      "points": [
+        "With trusted service providers who assist with hosting, email, or analytics under confidentiality obligations.",
+        "When required by law, court order, or government request.",
+        "To protect the rights, safety, and security of BluKits Technologies, our clients, and website users."
+      ]
+    },
+    {
+      "id": "data-retention",
+      "title": "Data Retention",
+      "content": "We retain personal information only for as long as needed to fulfil the purposes described in this policy, unless a longer retention period is required by law or ongoing business needs such as active client engagements."
+    },
+    {
+      "id": "data-security",
+      "title": "Data Security",
+      "content": "We implement reasonable technical and organisational safeguards to protect information against unauthorised access, alteration, disclosure, or loss. However, no method of transmission over the internet is completely secure, and we cannot guarantee absolute security."
+    },
+    {
+      "id": "your-rights",
+      "title": "Your Rights",
+      "content": "Depending on applicable law, you may have the right to request access to, correction of, or deletion of your personal information. You may also withdraw consent for marketing communication at any time.",
+      "points": [
+        "Request a copy of personal data we hold about you.",
+        "Ask us to correct inaccurate or incomplete information.",
+        "Request deletion where legally permissible.",
+        "Opt out of non-essential marketing emails."
+      ]
+    },
+    {
+      "id": "cookies",
+      "title": "Cookies and Analytics",
+      "content": "Our website may use essential cookies required for basic functionality and security. We may also use analytics tools to understand how visitors use our site. You can control cookie preferences through your browser settings."
+    },
+    {
+      "id": "policy-updates",
+      "title": "Policy Updates",
+      "content": "We may update this Privacy Policy from time to time. Changes will be posted on this page. Continued use of the website after updates constitutes acceptance of the revised policy."
+    },
+    {
+      "id": "contact",
+      "title": "Contact Us",
+      "content": "For privacy-related questions or requests regarding your personal information, contact BluKits Technologies using the details below."
+    }
+  ]
+}

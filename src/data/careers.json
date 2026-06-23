@@ -1,0 +1,114 @@
+[
+  {
+    "id": "job-1",
+    "title": "Senior Full Stack Developer",
+    "department": "Engineering",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Lead development of scalable web applications using modern JavaScript frameworks and RESTful services.",
+    "requirements": [
+      "5+ years of experience in full stack development",
+      "Strong knowledge of React, Next.js, and Node.js",
+      "Experience with relational databases and API design",
+      "Familiarity with agile delivery and code reviews"
+    ]
+  },
+  {
+    "id": "job-2",
+    "title": "Mobile Application Developer",
+    "department": "Engineering",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Build and maintain cross-platform and native mobile applications for enterprise and consumer use cases.",
+    "requirements": [
+      "3+ years of mobile development experience",
+      "Proficiency in Flutter or React Native",
+      "Understanding of mobile UI patterns and performance",
+      "Experience publishing apps to app stores"
+    ]
+  },
+  {
+    "id": "job-3",
+    "title": "UI/UX Designer",
+    "department": "Design",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Create user-centred interface designs, wireframes, and prototypes for web and mobile products.",
+    "requirements": [
+      "3+ years of UI/UX design experience",
+      "Proficiency in Figma or similar design tools",
+      "Strong portfolio demonstrating UX thinking",
+      "Ability to collaborate closely with developers"
+    ]
+  },
+  {
+    "id": "job-4",
+    "title": "QA Engineer",
+    "department": "Quality Assurance",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Plan and execute test cases, report defects, and support release quality across software projects.",
+    "requirements": [
+      "2+ years of software testing experience",
+      "Knowledge of manual and API testing",
+      "Attention to detail and clear documentation skills",
+      "Familiarity with test management tools"
+    ]
+  },
+  {
+    "id": "job-5",
+    "title": ".NET Application Developer",
+    "department": "Engineering",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Develop and enhance Windows and enterprise applications using the .NET ecosystem.",
+    "requirements": [
+      "4+ years of .NET development experience",
+      "Experience with C#, ASP.NET, and SQL Server",
+      "Understanding of desktop or enterprise architectures",
+      "Ability to work with legacy and modern codebases"
+    ]
+  },
+  {
+    "id": "job-6",
+    "title": "Business Analyst",
+    "department": "Delivery",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Gather requirements, document workflows, and bridge communication between clients and engineering teams.",
+    "requirements": [
+      "3+ years in business analysis or similar role",
+      "Strong documentation and workshop facilitation skills",
+      "Experience with software project lifecycles",
+      "Excellent verbal and written communication"
+    ]
+  },
+  {
+    "id": "job-7",
+    "title": "DevOps Engineer",
+    "department": "Infrastructure",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Support CI/CD pipelines, cloud deployments, and environment management for client applications.",
+    "requirements": [
+      "3+ years of DevOps or cloud operations experience",
+      "Experience with AWS, Azure, or similar platforms",
+      "Knowledge of Docker and deployment automation",
+      "Understanding of monitoring and incident response"
+    ]
+  },
+  {
+    "id": "job-8",
+    "title": "Junior Software Developer",
+    "department": "Engineering",
+    "location": "Vadodara / Remote",
+    "type": "Full-time",
+    "description": "Contribute to feature development, bug fixes, and code quality under senior developer guidance.",
+    "requirements": [
+      "1+ year of software development experience or relevant projects",
+      "Knowledge of at least one modern programming language",
+      "Willingness to learn and follow team standards",
+      "Basic understanding of databases and APIs"
+    ]
+  }
+]

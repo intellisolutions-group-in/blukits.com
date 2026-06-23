@@ -1,0 +1,79 @@
+{
+  "title": "Terms of Service",
+  "badge": "Legal",
+  "description": "Terms governing your use of the BluKits Technologies website and services.",
+  "intro": "By accessing or using the BluKits Technologies website, you agree to these Terms of Service. Please read them carefully. If you do not agree, you should not use this website.",
+  "relatedPage": {
+    "title": "Privacy Policy",
+    "href": "/privacy/",
+    "description": "How we handle your personal information."
+  },
+  "sections": [
+    {
+      "id": "acceptance",
+      "title": "Acceptance of Terms",
+      "content": "These terms apply to all visitors and users of the BluKits Technologies website. By browsing, submitting forms, or contacting us through the site, you confirm that you have read and accepted these terms."
+    },
+    {
+      "id": "use-of-website",
+      "title": "Use of Website",
+      "content": "This website provides information about our software development services, company profile, careers, and contact channels. You agree to use the site lawfully and not to disrupt its operation.",
+      "points": [
+        "Content is provided for general information and may change without prior notice.",
+        "You must not attempt unauthorised access to systems, data, or accounts.",
+        "You must not upload malicious code, spam, or misleading information through forms.",
+        "Automated scraping or misuse of website resources is prohibited without written consent."
+      ]
+    },
+    {
+      "id": "services-and-engagements",
+      "title": "Services and Client Engagements",
+      "content": "Descriptions of services on this website do not constitute a binding offer. Formal project engagements, deliverables, timelines, and pricing are governed by separate written agreements, statements of work, or proposals mutually accepted by BluKits Technologies and the client."
+    },
+    {
+      "id": "intellectual-property",
+      "title": "Intellectual Property",
+      "content": "Unless otherwise stated, all website content including text, branding, graphics, layouts, and code displayed on this site is owned by BluKits Technologies or used under licence.",
+      "points": [
+        "You may view and download content for personal, non-commercial reference only.",
+        "Unauthorised reproduction, distribution, or modification is prohibited.",
+        "Client project deliverables are governed by separate contractual IP terms."
+      ]
+    },
+    {
+      "id": "user-submissions",
+      "title": "User Submissions",
+      "content": "Information submitted through contact forms, career applications, or inquiries must be accurate to the best of your knowledge. You are responsible for the content you submit and for ensuring you have the right to share any files or materials uploaded."
+    },
+    {
+      "id": "third-party-links",
+      "title": "Third-Party Links",
+      "content": "Our website may contain links to third-party websites or resources. BluKits Technologies is not responsible for the content, policies, or practices of external sites. Accessing third-party links is at your own risk."
+    },
+    {
+      "id": "disclaimer",
+      "title": "Disclaimer of Warranties",
+      "content": "The website and its content are provided on an as is and as available basis. We make reasonable efforts to keep information accurate but do not warrant completeness, reliability, or fitness for any particular purpose."
+    },
+    {
+      "id": "limitation-of-liability",
+      "title": "Limitation of Liability",
+      "content": "To the fullest extent permitted by law, BluKits Technologies shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website, even if we have been advised of the possibility of such damages."
+    },
+    {
+      "id": "governing-law",
+      "title": "Governing Law",
+      "content": "These Terms of Service are governed by the laws of India. Any disputes arising from or relating to use of this website shall be subject to the exclusive jurisdiction of courts in Vadodara, Gujarat."
+    },
+    {
+      "id": "changes-to-terms",
+      "title": "Changes to Terms",
+      "content": "We may revise these terms at any time by updating this page. Continued use of the website after updates constitutes acceptance of the revised terms."
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "content": "If you have questions about these Terms of Service, please contact BluKits Technologies using the information below."
+    }
+  ]
+}

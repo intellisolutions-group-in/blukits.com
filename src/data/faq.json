@@ -1,0 +1,106 @@
+[
+  {
+    "id": "general",
+    "title": "General",
+    "items": [
+      {
+        "question": "What services does BluKits Technologies provide?",
+        "answer": "We provide end-to-end software development services including web development, mobile applications, desktop software, enterprise systems, API integration, UI/UX design, testing, cloud applications, and ongoing maintenance."
+      },
+      {
+        "question": "Which industries do you work with?",
+        "answer": "We work with organisations across manufacturing, logistics, healthcare, education, retail, professional services, and other sectors that require custom software solutions."
+      },
+      {
+        "question": "Do you work with clients outside Vadodara?",
+        "answer": "Yes. While our head office is in Vadodara, we serve clients across India and support remote collaboration through structured communication and project management practices."
+      },
+      {
+        "question": "How do you start a new project?",
+        "answer": "We begin with a discovery discussion to understand goals, users, constraints, and success criteria. This is followed by scope definition, planning, and a phased delivery approach."
+      },
+      {
+        "question": "Can you work with our existing development team?",
+        "answer": "Yes. We frequently collaborate with in-house teams, offering dedicated developers, architecture guidance, or end-to-end delivery depending on your needs."
+      }
+    ]
+  },
+  {
+    "id": "process",
+    "title": "Process and Delivery",
+    "items": [
+      {
+        "question": "What development methodology do you follow?",
+        "answer": "We use agile-inspired delivery with sprint planning, regular demos, and continuous feedback. The exact cadence is adapted to project size and stakeholder availability."
+      },
+      {
+        "question": "How do you handle project communication?",
+        "answer": "We assign a primary point of contact, share progress updates, maintain documentation, and conduct review meetings at agreed intervals throughout the project."
+      },
+      {
+        "question": "Do you provide source code and documentation?",
+        "answer": "Yes. Upon project completion and as per the agreement, we deliver source code, deployment notes, and technical documentation required for handover."
+      },
+      {
+        "question": "How do you manage changes in scope?",
+        "answer": "Scope changes are reviewed for impact on timeline and cost. We document revisions clearly and seek approval before implementation to maintain transparency."
+      },
+      {
+        "question": "What is your typical project timeline?",
+        "answer": "Timelines depend on complexity, integrations, and approval cycles. Smaller modules may take a few weeks while enterprise platforms are delivered in phased milestones."
+      }
+    ]
+  },
+  {
+    "id": "technical",
+    "title": "Technical",
+    "items": [
+      {
+        "question": "Which technologies do you use?",
+        "answer": "We select technologies based on project requirements. Common stacks include Next.js, React, Node.js, .NET, Flutter, SQL and NoSQL databases, and major cloud platforms."
+      },
+      {
+        "question": "Do you build mobile apps for both Android and iOS?",
+        "answer": "Yes. We develop native and cross-platform mobile applications based on performance, budget, and long-term maintenance considerations."
+      },
+      {
+        "question": "Can you integrate with third-party systems?",
+        "answer": "Yes. We design and implement APIs and integrations with CRMs, ERPs, payment gateways, authentication providers, and other enterprise systems."
+      },
+      {
+        "question": "How do you approach application security?",
+        "answer": "Security is considered during architecture, development, and testing. We follow secure coding practices, access control principles, and validation suitable for each application type."
+      },
+      {
+        "question": "Do you offer software testing services?",
+        "answer": "Yes. Our QA services include functional testing, regression testing, API validation, and test documentation to support reliable releases."
+      }
+    ]
+  },
+  {
+    "id": "support",
+    "title": "Support and Engagement",
+    "items": [
+      {
+        "question": "Do you provide post-launch support?",
+        "answer": "Yes. We offer maintenance and support plans covering bug fixes, minor enhancements, monitoring assistance, and planned updates after go-live."
+      },
+      {
+        "question": "How do we request a project estimate?",
+        "answer": "Share your requirements through our contact form or email. We will schedule a discussion and provide a proposal outlining scope, approach, and indicative timelines."
+      },
+      {
+        "question": "What information should we share for an accurate quote?",
+        "answer": "Helpful inputs include business objectives, target users, key features, integrations, preferred platforms, and any existing systems or designs you already have."
+      },
+      {
+        "question": "Do you sign non-disclosure agreements?",
+        "answer": "Yes. We are open to NDAs when required to protect confidential business information shared during discovery and development."
+      },
+      {
+        "question": "How can we get started with BluKits Technologies?",
+        "answer": "Contact us via the website form, email at info@blukits.com, or phone. We will respond to schedule an initial consultation and outline the next steps."
+      }
+    ]
+  }
+]
