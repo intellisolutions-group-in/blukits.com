@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MessageSquare, Phone } from "lucide-react";
+import { Mail, MessageSquare, Users } from "lucide-react";
 import ContactForm from "@/components/ui/ContactForm";
 import company from "@/data/company.json";
 
@@ -37,7 +37,7 @@ const ServiceInquiry = ({ title }: ServiceInquiryProps) => {
                   desc: "Describe what you want to build and who will use it.",
                 },
                 {
-                  icon: Phone,
+                  icon: Users,
                   label: "Quick consultation",
                   desc: "We discuss scope, technology, and delivery approach.",
                 },
