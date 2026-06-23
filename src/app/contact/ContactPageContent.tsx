@@ -2,7 +2,6 @@
 
 import ContactForm from "@/components/ui/ContactForm";
 import company from "@/data/company.json";
-import { offices } from "@/lib/data";
 import { Mail, Clock } from "lucide-react";
 
 const ContactPageContent = () => {

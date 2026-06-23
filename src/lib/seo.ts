@@ -44,13 +44,6 @@ export function organizationSchema() {
     email: company.email,
     foundingDate: String(company.establishedYear),
     description: company.description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Vadodara",
-      addressRegion: "Gujarat",
-      postalCode: "390007",
-      addressCountry: "IN",
-    },
     areaServed: {
       "@type": "Country",
       name: "India",

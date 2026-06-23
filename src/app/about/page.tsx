@@ -4,7 +4,7 @@ import AboutMissionVision from "@/components/sections/about/AboutMissionVision";
 import AboutValues from "@/components/sections/about/AboutValues";
 import AboutExpertise from "@/components/sections/about/AboutExpertise";
 import AboutTimeline from "@/components/sections/about/AboutTimeline";
-import AboutLocation from "@/components/sections/about/AboutLocation";
+// import AboutLocation from "@/components/sections/about/AboutLocation";
 import CTASection from "@/components/sections/CTASection";
 import { buildMetadata } from "@/lib/seo";
 import company from "@/data/company.json";
@@ -25,7 +25,7 @@ export default function AboutPage() {
       <AboutValues />
       <AboutExpertise />
       <AboutTimeline />
-      <AboutLocation />
+      {/* <AboutLocation /> */}
       <CTASection />
     </>
   );

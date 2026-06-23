@@ -10,7 +10,7 @@ import {
   Shield,
 } from "lucide-react";
 import company from "@/data/company.json";
-import offices from "@/data/offices.json";
+
 import { PAGE_TOP_PADDING } from "@/lib/layout";
 import type { LegalPageData } from "@/types/legal";
 
@@ -42,7 +42,6 @@ type LegalPageContentProps = {
 };
 
 const LegalPageContent = ({ data, pageSlug }: LegalPageContentProps) => {
-  const hq = offices[0];
 
   return (
     <>
