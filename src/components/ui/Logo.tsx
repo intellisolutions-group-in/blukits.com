@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const Logo = ({
   height = 40,
@@ -11,8 +12,9 @@ const Logo = ({
   className?: string;
   compact?: boolean;
 }) => {
-  const fontSize =
-    height <= 32 || compact ? "text-base sm:text-lg" : "text-lg sm:text-xl";
+  const logoHeight = compact ? Math.min(height, 32) : height;
+  // The logo image has roughly 4:1 aspect ratio
+  const logoWidth = Math.round(logoHeight * 4);
 
   return (
     <Link
@@ -20,14 +22,29 @@ const Logo = ({
       className={`inline-flex max-w-none items-center whitespace-nowrap ${className}`}
       aria-label="BluKits Technologies Logo"
     >
-      <span
-        className={`${fontSize} inline-flex items-center gap-1.5 font-bold leading-none tracking-tight`}
-      >
-        <span className="text-primary">BluKits</span>
-        <span className="text-dark dark:text-white">Technologies</span>
-      </span>
+      {/* Light mode logo */}
+      <Image
+        src="/images/logo.png"
+        alt="BluKits Technologies"
+        width={logoWidth}
+        height={logoHeight}
+        priority
+        className="object-contain dark:hidden"
+        style={{ height: logoHeight, width: "auto" }}
+      />
+      {/* Dark mode logo */}
+      <Image
+        src="/images/logo-white.png"
+        alt="BluKits Technologies"
+        width={logoWidth}
+        height={logoHeight}
+        priority
+        className="object-contain hidden dark:block"
+        style={{ height: logoHeight, width: "auto" }}
+      />
     </Link>
   );
 };
 
 export default Logo;
+

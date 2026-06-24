@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   title: `${company.brandName} | IT and Software Development Company in India`,
   description: company.description,
   metadataBase: new URL(company.url),
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
