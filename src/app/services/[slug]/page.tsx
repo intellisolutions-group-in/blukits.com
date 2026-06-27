@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import ScrollUp from "@/components/Common/ScrollUp";
 import ServiceDetailContent from "@/components/sections/services/ServiceDetailContent";
 import CTASection from "@/components/sections/CTASection";
-import { buildMetadata, serviceSchema } from "@/lib/seo";
+import { buildMetadata, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { getServiceBySlug, getRelatedServices, services } from "@/lib/data";
+import company from "@/data/company.json";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,13 +30,22 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   const related = getRelatedServices(slug);
-  const schema = serviceSchema(service.title, service.shortDescription, slug);
+  const svcSchema = serviceSchema(service.title, service.shortDescription, slug);
+  const crumbSchema = breadcrumbSchema([
+    { name: "Home", url: company.url },
+    { name: "Services", url: `${company.url}/services/` },
+    { name: service.title, url: `${company.url}/services/${slug}/` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(svcSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbSchema) }}
       />
       <ScrollUp />
       <ServiceDetailContent service={service} related={related} />
@@ -46,3 +56,4 @@ export default async function ServiceDetailPage({ params }: Props) {
     </>
   );
 }
+

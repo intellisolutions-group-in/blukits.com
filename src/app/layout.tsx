@@ -4,14 +4,17 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Providers } from "./providers";
-import { organizationSchema } from "@/lib/seo";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 import company from "@/data/company.json";
 import "../styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `${company.brandName} | IT and Software Development Company in India`,
+  title: {
+    default: `${company.brandName} | IT and Software Development Company in India`,
+    template: `%s | ${company.brandName}`,
+  },
   description: company.description,
   metadataBase: new URL(company.url),
   icons: {
@@ -28,21 +31,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const schema = organizationSchema();
+  const orgSchema = organizationSchema();
+  const siteSchema = websiteSchema();
 
   return (
     <html suppressHydrationWarning lang="en" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
       </head>
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <div className="isolate">
             <Header />
-            {children}
+            <main>{children}</main>
             <Footer />
           </div>
           <ScrollToTop />

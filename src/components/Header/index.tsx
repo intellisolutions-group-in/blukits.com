@@ -63,6 +63,8 @@ const Header = () => {
             onClick={navbarToggleHandler}
             id="navbarToggler"
             aria-label="Mobile Menu"
+            aria-expanded={navbarOpen}
+            aria-controls="navbarCollapse"
             className="ring-primary absolute top-1/2 right-4 z-50 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
           >
             <span

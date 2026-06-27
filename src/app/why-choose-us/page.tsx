@@ -54,6 +54,9 @@ export default function WhyChooseUsPage() {
       />
       <section className="pb-16 pt-8 md:pb-20 lg:pb-28">
         <div className="container">
+          <h2 className="mb-10 text-3xl font-bold text-dark dark:text-white">
+            Why Businesses Choose BluKits Technologies
+          </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {reasons.map((item) => (
               <div

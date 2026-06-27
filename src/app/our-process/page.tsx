@@ -54,6 +54,9 @@ export default function OurProcessPage() {
       />
       <section className="pb-16 pt-8 md:pb-20 lg:pb-28">
         <div className="container">
+          <h2 className="mb-10 text-3xl font-bold text-dark dark:text-white">
+            Our Software Development Phases
+          </h2>
           <div className="mx-auto max-w-[800px] space-y-8">
             {phases.map((phase, index) => (
               <div

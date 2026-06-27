@@ -26,15 +26,13 @@ const BlogCard = ({ post, delay = 0, featured = false }: BlogCardProps) => {
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -6 }}
-      className={`group relative h-full overflow-hidden rounded-2xl bg-white shadow-two transition-shadow hover:shadow-feature-2 dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark ${
-        featured ? "md:flex md:items-stretch" : ""
-      }`}
+      className={`group relative h-full overflow-hidden rounded-2xl bg-white shadow-two transition-shadow hover:shadow-feature-2 dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark ${featured ? "md:flex md:items-stretch" : ""
+        }`}
     >
       <Link
         href={`/blog/${post.slug}/`}
-        className={`relative block overflow-hidden bg-linear-to-br from-primary/20 via-primary/10 to-primary/5 ${
-          featured ? "md:w-2/5" : "aspect-[16/10] w-full"
-        }`}
+        className={`relative block overflow-hidden bg-linear-to-br from-primary/20 via-primary/10 to-primary/5 ${featured ? "md:w-2/5" : "aspect-[16/10] w-full"
+          }`}
       >
         {post.image && (
           <Image
@@ -66,9 +64,8 @@ const BlogCard = ({ post, delay = 0, featured = false }: BlogCardProps) => {
         </div>
 
         <h3
-          className={`mb-3 font-bold text-dark transition-colors group-hover:text-primary dark:text-white ${
-            featured ? "text-2xl md:text-3xl" : "text-xl"
-          }`}
+          className={`mb-3 font-bold text-dark transition-colors group-hover:text-primary dark:text-white ${featured ? "text-2xl md:text-3xl" : "text-xl"
+            }`}
         >
           <Link href={`/blog/${post.slug}/`}>{post.title}</Link>
         </h3>
@@ -78,29 +75,9 @@ const BlogCard = ({ post, delay = 0, featured = false }: BlogCardProps) => {
         </p>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-stroke pt-5 dark:border-stroke-dark">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-              {initials}
-            </div>
-            <div>
-              <p className="flex items-center gap-1 text-sm font-medium text-dark dark:text-white">
-                <User size={14} className="text-primary" />
-                {post.author.name}
-              </p>
-              <p className="text-xs text-body-color dark:text-body-color-dark">
-                {post.author.designation}
-              </p>
-            </div>
-          </div>
+
           <div className="flex items-center gap-4 text-xs text-body-color dark:text-body-color-dark">
-            <span className="inline-flex items-center gap-1">
-              <Calendar size={14} className="text-primary" />
-              {new Date(post.publishDate).toLocaleDateString("en-IN", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
-            </span>
+
             <span className="inline-flex items-center gap-1">
               <Clock size={14} className="text-primary" />
               {post.readTime}

@@ -2,20 +2,34 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import ScrollUp from "@/components/Common/ScrollUp";
 import FAQItem from "@/components/ui/FAQItem";
 import CTASection from "@/components/sections/CTASection";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, faqPageSchema } from "@/lib/seo";
 import { faq } from "@/lib/data";
 
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Find answers to common questions about BluKits Technologies services, process, and engagement models.",
-  keywords: ["FAQ", "software development questions"],
+    "Find answers to common questions about BluKits Technologies services, development process, technologies, and engagement models.",
+  keywords: [
+    "FAQ",
+    "software development questions",
+    "BluKits Technologies FAQ",
+    "IT services India questions",
+    "software project inquiry",
+  ],
   path: "/faq/",
 });
 
 export default function FAQPage() {
+  // Flatten all FAQ items for the schema
+  const allFaqItems = faq.flatMap((section) => section.items);
+  const schema = faqPageSchema(allFaqItems);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <ScrollUp />
       <Breadcrumb
         pageName="FAQ"
@@ -45,3 +59,4 @@ export default function FAQPage() {
     </>
   );
 }
+
