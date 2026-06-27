@@ -53,10 +53,10 @@ export function buildMetadata({
       ],
       ...(ogType === "article" && articleMeta
         ? {
-            publishedTime: articleMeta.publishedTime,
-            authors: articleMeta.authors,
-            tags: articleMeta.tags,
-          }
+          publishedTime: articleMeta.publishedTime,
+          authors: articleMeta.authors,
+          tags: articleMeta.tags,
+        }
         : {}),
     },
     twitter: {
@@ -73,10 +73,8 @@ export function buildMetadata({
 
 export function organizationSchema() {
   const sameAs = [
-    company.social?.linkedin,
     company.social?.facebook,
     company.social?.instagram,
-    company.social?.twitter,
   ].filter(Boolean);
 
   return {
