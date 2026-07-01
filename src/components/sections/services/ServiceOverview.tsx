@@ -33,7 +33,7 @@ const ServiceOverview = ({
   const Icon = getServiceIcon(slug);
 
   return (
-    <section className="dark:bg-bg-color-dark/40 bg-gray-light/60 py-16 md:py-20">
+    <section className="relative overflow-hidden dark:bg-bg-color-dark/40 bg-gray-light/60 py-16 md:py-20">
       <div className="container">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <motion.div
@@ -57,7 +57,7 @@ const ServiceOverview = ({
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="shadow-two mb-8 rounded-2xl border-l-4 border-primary bg-white p-6 md:p-8 dark:bg-dark dark:shadow-three"
+                className="shadow-two mb-8 rounded-2xl border-l-4 border-primary bg-white p-5 sm:p-6 md:p-8 dark:bg-dark dark:shadow-three"
               >
                 <p className="text-base leading-relaxed text-dark dark:text-white md:text-lg md:leading-8">
                   {leadParagraph}
@@ -65,7 +65,7 @@ const ServiceOverview = ({
               </motion.div>
             )}
 
-            <div className="shadow-two space-y-8 rounded-2xl bg-white p-6 md:p-8 dark:bg-dark dark:shadow-three">
+            <div className="shadow-two space-y-8 rounded-2xl bg-white p-5 sm:p-6 md:p-8 dark:bg-dark dark:shadow-three">
               {sections.map((section, sectionIndex) => (
                 <motion.div
                   key={section.title}
@@ -80,7 +80,7 @@ const ServiceOverview = ({
                   }
                 >
                   <h3 className="mb-4 flex items-center gap-3 text-lg font-bold text-dark dark:text-white md:text-xl">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
                       {String(sectionIndex + 1).padStart(2, "0")}
                     </span>
                     {section.title}
@@ -112,8 +112,8 @@ const ServiceOverview = ({
           </motion.div>
 
           <motion.aside
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="lg:col-span-4"
@@ -128,17 +128,17 @@ const ServiceOverview = ({
                 </div>
                 <ul className="divide-y divide-stroke p-6 dark:divide-stroke-dark">
                   <li className="flex items-center justify-between py-3 first:pt-0">
-                    <span className="flex items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
-                      <Layers size={16} className="text-primary" />
+                    <span className="flex shrink-0 items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
+                      <Layers size={16} className="text-primary shrink-0" />
                       Category
                     </span>
-                    <span className="text-sm font-semibold text-dark dark:text-white">
+                    <span className="text-sm font-semibold text-dark text-right dark:text-white ml-4">
                       {category}
                     </span>
                   </li>
                   <li className="flex items-center justify-between py-3">
-                    <span className="flex items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
-                      <Wrench size={16} className="text-primary" />
+                    <span className="flex shrink-0 items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
+                      <Wrench size={16} className="text-primary shrink-0" />
                       Technologies
                     </span>
                     <span className="text-sm font-semibold text-primary">
@@ -146,8 +146,8 @@ const ServiceOverview = ({
                     </span>
                   </li>
                   <li className="flex items-center justify-between py-3 last:pb-0">
-                    <span className="flex items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
-                      <ListChecks size={16} className="text-primary" />
+                    <span className="flex shrink-0 items-center gap-2 text-sm text-body-color dark:text-body-color-dark">
+                      <ListChecks size={16} className="text-primary shrink-0" />
                       Key Benefits
                     </span>
                     <span className="text-sm font-semibold text-primary">

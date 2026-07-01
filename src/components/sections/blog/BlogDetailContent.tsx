@@ -146,7 +146,7 @@ const BlogDetailContent = ({ post, related }: BlogDetailContentProps) => {
           <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl opacity-40" />
         </div>
 
-        <div className="container relative z-10">
+        <div className="container mt-8 relative z-10">
           {/* Breadcrumbs */}
           <motion.nav
             initial={{ opacity: 0, y: -10 }}

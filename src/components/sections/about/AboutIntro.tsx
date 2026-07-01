@@ -8,8 +8,8 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react";
+import { BarChart, Users, Target } from "lucide-react";
 import company from "@/data/company.json";
-import { PAGE_TOP_PADDING } from "@/lib/layout";
 import ThreeDGlobe from "@/components/canvas/ThreeDGlobe";
 
 const highlights = [
@@ -21,7 +21,7 @@ const highlights = [
 
 const AboutIntro = () => {
   return (
-    <section className={`relative overflow-hidden pb-16 md:pb-20 ${PAGE_TOP_PADDING}`}>
+    <section className="relative overflow-hidden pt-28 pb-16 md:pb-20 lg:pt-32">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
         <div

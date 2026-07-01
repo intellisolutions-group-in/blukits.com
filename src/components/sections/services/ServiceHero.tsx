@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { getServiceIcon } from "@/lib/service-icons";
-import { PAGE_TOP_PADDING } from "@/lib/layout";
 
 type ServiceHeroProps = {
   title: string;
@@ -24,7 +23,7 @@ const ServiceHero = ({
   const Icon = getServiceIcon(slug);
 
   return (
-    <section className={`relative overflow-hidden pb-12 md:pb-16 ${PAGE_TOP_PADDING}`}>
+    <section className="relative overflow-hidden pt-28 pb-12 md:pb-16 lg:pt-32">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import BlogCard from "@/components/ui/BlogCard";
 import CTASection from "@/components/sections/CTASection";
-import { PAGE_TOP_PADDING } from "@/lib/layout";
 import type { BlogPost } from "@/types/blog";
 
 type BlogListContentProps = {
@@ -17,7 +16,7 @@ const BlogListContent = ({ posts }: BlogListContentProps) => {
 
   return (
     <>
-      <section className={`relative overflow-hidden pb-8 ${PAGE_TOP_PADDING}`}>
+      <section className="relative overflow-hidden pt-28 pb-12 md:pb-16 lg:pt-32">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-20 top-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
           <div

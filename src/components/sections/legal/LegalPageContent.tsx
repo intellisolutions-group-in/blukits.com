@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import company from "@/data/company.json";
 
-import { PAGE_TOP_PADDING } from "@/lib/layout";
 import type { LegalPageData } from "@/types/legal";
 
 const sectionIcons: Record<string, typeof Shield> = {
@@ -45,7 +44,7 @@ const LegalPageContent = ({ data, pageSlug }: LegalPageContentProps) => {
 
   return (
     <>
-      <section className={`relative overflow-hidden pb-12 ${PAGE_TOP_PADDING}`}>
+      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-32 md:pb-20">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
           <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
